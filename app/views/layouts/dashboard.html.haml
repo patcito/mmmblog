@@ -1,0 +1,19 @@
+!!! Strict
+%html{ "xml:lang" => I18n.locale, :lang => I18n.locale, :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
+    %title
+      Ricodigo Blog
+    %meta{ :name => "description", :content => "" }
+    %meta{ :name => "keywords", :content => "" }
+
+  %body
+    #navbar
+      %span
+        = link_to 'Posts', admin_posts_path
+        = link_to '(+)', new_admin_post_path
+      %span
+        = link_to 'Comments', admin_comments_path
+      %span
+        = link_to 'Dashboard', admin_dashboard_path
+    = yield

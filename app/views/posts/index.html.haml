@@ -1,0 +1,55 @@
+.header
+  %h1
+    %a
+      Ricodigo
+
+.article
+  %h2
+    Posts
+  %ul
+    - for post in @posts
+      %li= "#{post.created_at.strftime("[%d %b %Y]")}#{link_to post.title, post_slug_path(post)} (#{post.comments.count} comments)"
+  %h2
+    Writers
+  %ul
+    %li
+      = writers_links
+  %h2
+    Tags
+  %ul
+    %li
+      = tag_cloud(params[:tag])
+  %h2
+    Code
+  %ul
+    %li
+      %a{:href=>"http://gitorious.org/~ricodigo"}
+        http://gitorious.org/~ricodigo
+  %h2
+    Contact
+  %ul
+    %li
+      %a{:href=>"mailto:contact@ricodigo.com"}
+        contact@ricodigo.com
+    %li
+      %a{:href=>"http://twitter.com/ricodigo"}
+        http://twitter.com/ricodigo
+    %li
+      %a{:href=>"http://identi.ca/ricodigo"}
+        http://identi.ca/ricodigo
+  %h2
+    Design
+  %ul
+    %li
+      Greatly inspired by Paul Davis
+  %h2
+    Copyrights
+  %ul
+    %li
+      Copyright 2009 Ricodigo
+  %h2
+    License
+  %ul
+    %li
+      %a{:href=>"http://creativecommons.org/licenses/by/3.0/"}
+        Creative Commons Attribution License

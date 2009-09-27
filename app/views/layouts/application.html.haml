@@ -1,0 +1,14 @@
+!!! Strict
+%html{ "xml:lang" => I18n.locale, :lang => I18n.locale, :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
+    %title
+      Ricodigo Blog
+    %meta{ :name => "description", :content => "" }
+    %meta{ :name => "keywords", :content => "" }
+    = stylesheet_link_tag 'application.css', :media => 'screen, projection'
+    %link{:rel=>"alternate", :type=>"application/atom+xml", :href=> custom_atom_posts}
+    %link{:rel=>"alternate", :type=>"application/atom+xml", :href=> custom_atom_comments}
+  %body
+    #navbar
+    = yield

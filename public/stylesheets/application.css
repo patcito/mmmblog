@@ -1,0 +1,37 @@
+body {
+font-family:monospace;
+font-size:12px;
+padding:25px;
+width:600px;
+}
+a, a:visited, a:active, a:hover, a:visited:hover {
+color:blue;
+text-decoration:none;
+}
+h1 {
+text-align:center;
+}
+h1, h2 {
+font-size:13px;
+font-weight:normal;
+}
+p {
+margin-bottom:10px;
+margin-left:15px;
+}
+pre {
+margin-left:30px;
+}
+ol li, ul li {
+margin-bottom:10px;
+}
+ul {
+list-style-type:none;
+padding-left:15px;
+}
+ul li:before {
+content:"* ";
+}
+li ul {
+margin-top:10px;
+}

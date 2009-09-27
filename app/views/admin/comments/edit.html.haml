@@ -1,0 +1,17 @@
+- form_for(@comment, :url => admin_comment_path(@comment)) do |f|
+  %p
+    %label
+      %h4
+        = 'Your name or OpenID:'
+  %p
+    = f.text_field :author
+  %p
+    = f.text_area :body
+  %p
+    = submit_tag "Edit"
+
+%p
+  This comment belongs to post:
+  = link_to @post.title, edit_admin_post_path(@post)
+  = link_to "#{@post.comments.count} comments", admin_post_comments_path(@comment.post)
+  = distance_of_time_in_words_to_now(@post.created_at)

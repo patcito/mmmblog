@@ -1,0 +1,29 @@
+-form_for(@post, :url=>admin_posts_path) do |f|
+  %p
+    %label
+      title
+  %p
+    = f.text_field :title
+  %p
+    %label
+      body
+  %p
+    = f.text_area :body
+  %p
+    %label
+      slug
+  %p
+    = f.text_field :slug
+  %p
+    %label
+      tags
+  %p
+    = f.text_field :tags
+  %p
+    %label
+      published_at
+  %p
+    = f.text_field :published_at, :value => Time.now
+  %p
+    = submit_tag "save"
+

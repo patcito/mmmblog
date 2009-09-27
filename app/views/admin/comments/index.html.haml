@@ -1,0 +1,4 @@
+- for comment in @comments
+  %li
+    = link_to comment.body[0..20], edit_admin_post_comment_path(comment.post,comment)
+    = distance_of_time_in_words_to_now(comment.created_at)

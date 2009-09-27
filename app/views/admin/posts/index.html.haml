@@ -1,0 +1,5 @@
+- for post in @posts
+  %li
+    = link_to post.title, edit_admin_post_path(post)
+    = link_to "#{post.comments.count} comments", admin_post_comments_path(post)
+    = distance_of_time_in_words_to_now(post.created_at)

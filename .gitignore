@@ -1,0 +1,6 @@
+*~
+coverage
+*.log
+*.sqlite3
+public/stylesheets/compiled/
+config/mmblog.yml

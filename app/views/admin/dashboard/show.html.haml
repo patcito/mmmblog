@@ -1,0 +1,15 @@
+#latest-posts
+  Latest posts
+  %ul
+    - for post in @posts
+      %li
+        = link_to post.title, edit_admin_post_path(post)
+        = link_to "#{post.comments.count} comments", admin_post_comments_path(post)
+        = distance_of_time_in_words_to_now(post.created_at)
+#latest-comments
+  Latest comments
+  %ul
+    - for comment in @comments
+      %li
+        = link_to comment.body[0..20], edit_admin_post_comment_path(post,comment)
+        = distance_of_time_in_words_to_now(comment.created_at)
