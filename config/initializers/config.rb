@@ -1,8 +1,8 @@
 require 'ostruct'
 
-config_file = "/etc/mmblog.yml"
+config_file = "/etc/mmmmblog.yml"
 if !File.exist?(config_file)
-  config_file = RAILS_ROOT+"/config/mmblog.yml"
+  config_file = RAILS_ROOT+"/config/mmmblog.yml"
 end
 
 if !File.exist?(config_file)

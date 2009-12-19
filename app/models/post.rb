@@ -1,5 +1,10 @@
 class Post
   include MongoMapper::Document
+  include MongoMapperExt::Filter
+
+  ensure_index :slug
+  ensure_index :tags
+  key :_id, String
   key :title, String, :null => false
   key :author, String, :null => false
   key :slug, String, :null => false
@@ -15,7 +20,7 @@ class Post
   key :tags, Array, :default => []
   DEFAULT_LIMIT = 15
   has_many :comments
-  validate :check_slug
+  before_validation_on_create :check_slug
   before_save :update_edited_at
 
   def update_edited_at

@@ -5,7 +5,7 @@
   %h1
     = @post.title
 %p
-  = @post.body
+  = textilize(@post.body)
 %h1
   = "Posted on #{@post.created_at.to_s}"
 %h4
@@ -15,12 +15,12 @@
     Tags
     = linked_tag_list(@post.tags)
 #comments-list
-  - @post.comments.each do |comment|
+  - @comments.each do |comment|
     %p{:id => comment.id}
       %h4
-        = "#{comment.author} says:"
+        = "#{author_link(comment)} said on #{comment.created_at}:"
     %p
-      = auto_link(h(comment.body), :all,  { "rel" => 'nofollow' })
+      = auto_link(h(comment.body).gsub(/\n/, '<br/>'), :all,  { "rel" => 'nofollow' })
 
 - form_for([@post, @comment],:url=>comment_form_url(@post, @comment)) do |f|
   %p
@@ -33,3 +33,4 @@
     = f.text_area :body
   %p
     = submit_tag "Post"
+    rel="nofollow" is added to all links so no need to spam here ;)

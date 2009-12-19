@@ -4,9 +4,17 @@
       %h4
         = 'Your name or OpenID:'
   %p
+    author
+  %p
     = f.text_field :author
   %p
+    author url
+  %p
+    = f.text_field :author_url
+  %p
     = f.text_area :body
+  %p
+    = f.text_field :created_at
   %p
     = submit_tag "Edit"
 

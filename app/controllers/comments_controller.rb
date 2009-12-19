@@ -18,16 +18,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  def new
-    comment = Comment.new(params[:comment])
-
-    respond_to do |format|
-      format.js do
-        render :partial => 'comment.html.erb', :object => comment
-      end
-    end
-  end
-
   def create
     @comment = Comment.new(session[:pending_comment] || params[:comment])
     @post = Post.find_by_slug(params[:slug])
@@ -55,9 +45,10 @@ class CommentsController < ApplicationController
     end
 
     if session[:pending_comment].nil? && @comment.save
-      redirect_to post_slug_path(@comment.post)
+      ##FIXME couldn't get :anchor=> to work
+      redirect_to post_slug_path(@comment.post)+"##{@comment.id}"
     else
-      redirect_to post_slug_path(@comment.post)
+      redirect_to post_slug_path(@post)+"#new_comment"
     end
   end
 

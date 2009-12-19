@@ -136,4 +136,12 @@ module ApplicationHelper
       fullname(author)
     end
   end
+
+  def author_link(comment)
+    unless comment.author_url.empty?
+      "<a href='#{comment.author_url}' rel='nofollow'>#{comment.author}</a>"
+    else
+      comment.author
+    end
+  end
 end

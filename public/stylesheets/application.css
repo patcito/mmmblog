@@ -35,3 +35,7 @@ content:"* ";
 li ul {
 margin-top:10px;
 }
+textarea {
+height:150px;
+width:500px;
+}

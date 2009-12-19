@@ -5,7 +5,7 @@ atom_feed(
 ) do |feed|
   feed.title     posts_title(@post, @tag, @author)
   feed.updated   @posts.empty? ? Time.now.utc : @posts.collect(&:edited_at).max
-  feed.generator "mmblog", "uri" => AppConfig.site
+  feed.generator "mmmmblog", "uri" => AppConfig.site
 
   feed.author do |xml|
     xml.name  writers(@author)

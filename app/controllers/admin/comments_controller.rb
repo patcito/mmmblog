@@ -25,4 +25,14 @@ class Admin::CommentsController < Admin::BaseController
       @comments = Comment.find(:all, :order => 'created_at desc')
     end
   end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    if params[:post_id]
+      redirect_to admin_post_comments_path(@comment.post)
+    else
+      redirect_to admin_comments_path
+    end
+  end
 end

@@ -1,5 +1,6 @@
 class Comment
   include MongoMapper::Document
+  key :_id, String
   key :post_id, String, :null => false
   key :author, String, :null => false
   key :author_url, String, :null => false
