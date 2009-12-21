@@ -21,6 +21,6 @@ class Comment
   end
 
   def requires_openid_authentication?
-    !!self.author.index(".")
+    self.author.index(".")
   end
 end
