@@ -18,7 +18,7 @@
     %label
       tags
   %p
-    = f.text_field :tags
+    = f.text_field :tags, :value=>@post.tags.join(',')
   %p
     %label
       published_at
