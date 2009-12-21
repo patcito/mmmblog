@@ -1,0 +1,31 @@
+base: &common
+  title: Ricodigo
+  site: http://blog.ricodigo.com
+  googlean: UA-10385211-1
+  session_key: _mmmmblog_session
+  session_secret: 9ac4fd97a52153070a0bd47467c00eded1badf526f145827384ddfde45ac0bfd3f0230c961ddfb9ef84d490b3d889e0169de8eee3ef7b7ed114262824f8aa8aa
+  rest_auth_key: b4d66d73a1ade79ce227fba01b33f2ab021888ef
+  rest_aut_digest_stretches: 10
+  adbard_host_id: 2746b6d24c93f71df12503ec2ab667e5
+  adbard_site_key: e8e24a6b2cba51145dc0c874e1b2f4a4
+  author:
+    name:    Ricodigo        # For copyright notice and ATOM feeds
+    email:   contact@mmmmblog.com # Exception emails will go here, and it is used in ATOM feeds
+    open_id:                  # These are used to login to the admin area
+        - http://google_id_foo@gmail.com
+        - http://google_id_bar@gmail.com
+        - http://google_id_foobar@gmail.com
+    writers:
+      jorge: Cuadrado
+      patrick: Aljord
+      david: Cuadrado
+development:
+  <<: *common
+  domain: localhost.lan
+production:
+  <<: *common
+  domain: mmmmblog.com
+test:
+  <<: *common
+  domain: test.loc
+
