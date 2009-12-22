@@ -98,7 +98,7 @@ module ApplicationHelper
     else
       tags = Post.tag_cloud()
     end
-
+    return "" if tags.size == 0
     max_size = options.delete(:max_size) || 35
     min_size = options.delete(:min_size) || 12
 
