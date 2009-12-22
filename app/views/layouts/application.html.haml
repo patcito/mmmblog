@@ -7,8 +7,9 @@
     %meta{ :name => "description", :content => "" }
     %meta{ :name => "keywords", :content => "" }
     = stylesheet_link_tag 'application.css', :media => 'screen, projection'
-    %link{:rel=>"alternate", :type=>"application/atom+xml", :href=> custom_atom_posts}
-    %link{:rel=>"alternate", :type=>"application/atom+xml", :href=> custom_atom_comments}
+    %link{:rel=>"alternate", :type=>"application/atom+xml", :href=> custom_atom_posts, :title => posts_title(nil, @tag, @author)}
+    //-unless @comments.blank?
+    //  %link{:rel=>"alternate", :type=>"application/atom+xml", :href=> custom_atom_comments, :title=>posts_title(@post, @tag, @author)}
   %body
     #navbar
     = yield
