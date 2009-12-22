@@ -15,7 +15,7 @@ atom_feed(
   @posts.each do |post|
    feed.entry(post, :url => post_slug_path(post, @tag, @author, :only_path => false), :published => post.published_at, :updated => post.edited_at) do |entry|
       entry.title   post.title
-      entry.content post.body_html, :type => 'html'
+      entry.content textilize(post.body)
     end
   end
 end
