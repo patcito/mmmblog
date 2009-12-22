@@ -1,6 +1,6 @@
 require 'ostruct'
 
-config_file = "/etc/mmmmblog.yml"
+config_file = "/etc/mmmblog.yml"
 if !File.exist?(config_file)
   config_file = RAILS_ROOT+"/config/mmmblog.yml"
 end
