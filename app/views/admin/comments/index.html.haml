@@ -1,6 +1,6 @@
 - for comment in @comments
   %li
-    = link_to comment.body[0..20], edit_admin_post_comment_path(comment.post,comment)
+    = link_to h(comment.body[0..20]), edit_admin_post_comment_path(comment.post,comment)
     - if params[:post_id]
       = link_to 'delete', admin_post_comment_path(comment.post, comment),  :class => 'delete'
     - else
