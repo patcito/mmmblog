@@ -34,7 +34,11 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment)
     @comment.post_id = Post.find_by_slug(params[:slug]).id
     @comment.blank_openid_fields
-    successful_login(@comment)
+    if @comment.body.include?('://') || @comment.body.include?('.com')
+      failed_login
+    else
+      successful_login(@comment)
+    end
   end
 
   def post_with_openid(comment)
