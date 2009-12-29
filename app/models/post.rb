@@ -14,35 +14,21 @@ class Post
   key :approved_comments_count, Integer, :default => 0, :null => false
   key :cached_tag_list, String
   key :published_at, Time
-  key :created_at, Time, :default => Time.now
-  key :updated_at, Time
   key :edited_at, Time
   key :tags, Array, :default => []
   DEFAULT_LIMIT = 15
   has_many :comments
   before_validation_on_create :check_slug
-  before_save :update_edited_at
+  timestamps!
 
-  def update_edited_at
-    self.edited_at = Time.now unless edited_at
-  end
-
-  def set_slug
-    self.slug = self.title if slug.blank?
-    result = slug.downcase
-    result.gsub!(/&(\d)+;/, '')  # Ditch Entities
-    result.gsub!('&', 'and')     # Replace & with 'and'
-    result.gsub!(/['"]/, '')    # replace quotes by nothing
-    result.gsub!(/\W/, ' ')     # strip all non word chars
-    result.gsub!(/\ +/, '-')    # replace all white space sections with a dash
-    result.gsub!(/(-)$/, '')    # trim dashes
-    result.gsub!(/^(-)/, '')    # trim dashes
-    result.gsub!(/[^a-zA-Z0-9\-]/, '-') # Get rid of anything we don't like
-    self.slug = result
+  def sluggize
+    if self.slug.blank?
+      self.slug = self.title.gsub(/[^A-Za-z0-9\s\-]/, "")[0,40].strip.gsub(/\s+/, "-").downcase
+    end
   end
 
   def check_slug
-    self.set_slug
+    self.sluggize
     if Post.find_by_slug(self.slug)
       self.errors.add('slug', 'Slug already taken')
     end

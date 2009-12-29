@@ -7,8 +7,8 @@ class Comment
   key :author_email, String, :null => false
   key :body, String, :null => false
   key :body_html, String, :null => false
-  key :created_at, Time, :default => Time.now.utc
-  key :updated_at, Time
+  timestamps!
+
 
   validates_presence_of :author, :body, :post
 
@@ -21,8 +21,6 @@ class Comment
   end
 
   def requires_openid_authentication?
-    puts "bbbbbbbbbbb"
-    puts author
     author.index(".") #if author
   end
 end
