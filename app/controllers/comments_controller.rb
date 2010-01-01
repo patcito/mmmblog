@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
     if params[:comment]
       session[:comment] = params[:comment]
     end
-    if session[:comment] && session[:comment][:author].index('.')
+    if session[:comment] && session[:comment][:author] && session[:comment][:author].index('.')
       post_with_openid(session[:comment])
     else
       post_without_openid(params[:comment])
@@ -34,7 +34,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment)
     @comment.post_id = Post.find_by_slug(params[:slug]).id
     @comment.blank_openid_fields
-    if @comment.body.include?('://') || @comment.body.include?('.com')
+    if @comment.body && (@comment.body.include?('://') || @comment.body.include?('.com'))
       failed_login
     else
       successful_login(@comment)
