@@ -7,10 +7,11 @@ class Comment
   key :author_email, String, :null => false
   key :body, String, :null => false
   key :body_html, String, :null => false
+  key :published, Boolean, :default => false
   timestamps!
 
 
-  validates_presence_of :author, :body, :post
+  validates_presence_of :author, :body
 
   belongs_to :post
   attr_accessor         :openid_error
