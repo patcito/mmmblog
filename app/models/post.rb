@@ -65,6 +65,6 @@ class Post
     if tag
       options[:conditions].merge!({:tags => tag.to_a})
     end
-    find(:all, options)
+    all(options)
   end
 end

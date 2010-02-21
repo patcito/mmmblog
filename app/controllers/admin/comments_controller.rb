@@ -3,8 +3,8 @@ class Admin::CommentsController < Admin::BaseController
   include OpenIdAuthentication
 
   def show
-    @posts = Post.find(:all, :limit => 5)
-    @comments = Comment.find(:all, :limit => 10)
+    @posts = Post.all(:limit => 5)
+    @comments = Comment.all(:limit => 10)
   end
 
   def edit
@@ -22,7 +22,7 @@ class Admin::CommentsController < Admin::BaseController
     if params[:post_id]
       @comments = Comment.find_all_by_post_id(params[:post_id], :order => 'created_at desc')
     else
-      @comments = Comment.find(:all, :order => 'created_at desc')
+      @comments = Comment.all(:order => 'created_at desc')
     end
   end
 

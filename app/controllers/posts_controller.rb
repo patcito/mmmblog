@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by_slug(params[:slug])
-    @comments = Comment.find(:all, :order => 'created_at asc',
+    @comments = Comment.all(:order => 'created_at asc',
                              :conditions => {:post_id => @post.id, :published => true})
     @comment = Comment.new
   end
