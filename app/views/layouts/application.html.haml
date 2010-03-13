@@ -14,6 +14,14 @@
     #navbar
     = yield
     :erb
+      <!--Ad Bard advertisement snippet, begin -->
+      <script type='text/javascript'>
+      var ab_h = '<%= AppConfig.adbard_host_id %>';
+      var ab_s = '<%= AppConfig.adbard_site_key %>';
+      </script>
+      <script type='text/javascript' src='http://cdn1.adbard.net/js/ab1.js'></script>
+      <!--Ad Bard, end -->
+
       <script type="text/javascript">
         var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
         document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
